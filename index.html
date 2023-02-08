@@ -80,7 +80,13 @@
                             break;
                         case 3:
                             let fixID = parseInt(prompt("Nhap ID"));
-                            students.forEach();
+                            for (i = 0; i < students.length; i++) {
+                                if (i === fixID - 1) {
+                                    students[i].name = prompt("Nhap name");
+                                    students[i].address =
+                                        prompt("Nhap address");
+                                }
+                            }
                             for (i = 0; i < students.length; i++) {
                                 document.writeln(`<tr>
 				<td>${students[i].id}</td>
@@ -89,6 +95,16 @@
 			</tr>`);
                             }
                             break;
+                        case 4:
+                            let delID = parseInt(prompt("Nhap ID"));
+                            students.splice(delID - 1, 1);
+                            for (i = 0; i < students.length; i++) {
+                                document.writeln(`<tr>
+				<td>${students[i].id}</td>
+				<td>${students[i].name}</td>
+				<td>${students[i].address}</td>
+			</tr>`);
+                            }
                         default:
                             break;
                     }
