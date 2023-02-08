@@ -54,6 +54,20 @@ if (Enter === 1) {
         name: prompt("Nhap ten SV"),
         address: prompt("Nhap address SV"),
     };
+    // if (
+    //     newStudents.name === "" ||
+    //     newStudents.name.length > 15 ||
+    //     newStudents.name === " "
+    // ) {
+    //     alert("Ban nhap sai ten SV");
+    // }
+    // if (
+    //     newStudents.address === "" ||
+    //     newStudents.add.length > 15 ||
+    //     newStudents.name === " "
+    // ) {
+    //     alert("ban nhap sai address SV");
+    // }
     students.push(newStudent);
     console.log(students);
 } else if (Enter === 3) {
