@@ -75,7 +75,7 @@ switch (enter) {
         console.log(filterGoodStudent());
         break;
     case 4:
-        console.log("Chua hieu de");
+        console.log(findFirstGoodStudent());
         break;
     case 5:
         console.log(addMathPoints());
@@ -132,6 +132,18 @@ function filterGoodStudent() {
         }
     }
     return listGoodStudents;
+}
+
+function findFirstGoodStudent() {
+    for (let i = 0; i < students.length; i++) {
+        if (
+            students[i].toan >= 8 &&
+            students[i].ly >= 8 &&
+            students[i].hoa >= 8
+        )
+            return students[i];
+    }
+    return alert("Khong tim thay sinh vien gioi");
 }
 
 function addMathPoints() {
