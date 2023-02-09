@@ -24,14 +24,14 @@ while (Enter >= 1 && Enter <= 4) {
         // }
         // }
     } else if (Enter === 2) {
-        console.log(listWord);
+        console.table(listWord);
         // Enter = Number(prompt(menu));
     } else if (Enter === 3) {
         let enterAnyEn = prompt("Nhap AnyEnWord: ");
         let check = true;
         for (let i = 0; i < listWord.length; i++) {
             if (enterAnyEn == listWord[i].enWord) {
-                console.log(listWord[i].viWord);
+                console.table(listWord[i].viWord);
                 check = false;
             }
         }
@@ -41,6 +41,7 @@ while (Enter >= 1 && Enter <= 4) {
         // Enter = Number(prompt(menu));
     } else if (Enter === 4) {
         alert("Cam on da su dung tu dien");
+        break;
     } // else {
     //     alert("Moi ban chon lai");
     // }

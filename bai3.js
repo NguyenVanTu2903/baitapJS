@@ -44,7 +44,7 @@ while (enterData >= 1 && enterData <= 5) {
 
         danhSachDoiBong.push(newDanhSachDoiBong);
     } else if (enterData === 2) {
-        console.log(danhSachDoiBong);
+        console.table(danhSachDoiBong);
     } else if (enterData === 3) {
         let enterID = Number(prompt("Nhap id:"));
         let check = true;
@@ -64,7 +64,7 @@ while (enterData >= 1 && enterData <= 5) {
         } else alert("Khong tim thay doi bong nao de xoa");
     } else if (enterData === 5) {
         alert("Goodbye!");
-        close;
+        break;
     }
     enterData = Number(prompt(menu));
 }

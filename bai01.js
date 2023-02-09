@@ -45,48 +45,50 @@ const menu = `
 Nhap lua chon:`;
 
 let Enter = Number(prompt(menu));
-
-if (Enter === 1) {
-    console.log(students);
-} else if (Enter === 2) {
-    let newStudent = {
-        id: students.length + 1,
-        name: prompt("Nhap ten SV"),
-        address: prompt("Nhap address SV"),
-    };
-    // if (
-    //     newStudents.name === "" ||
-    //     newStudents.name.length > 15 ||
-    //     newStudents.name === " "
-    // ) {
-    //     alert("Ban nhap sai ten SV");
-    // }
-    // if (
-    //     newStudents.address === "" ||
-    //     newStudents.add.length > 15 ||
-    //     newStudents.name === " "
-    // ) {
-    //     alert("ban nhap sai address SV");
-    // }
-    students.push(newStudent);
-    console.log(students);
-} else if (Enter === 3) {
-    let fixID = Number(prompt("Nhap ID cua SV"));
-    if (fixID <= 0 || fixID > students.length + 1) {
-        console.log("Khong tim thay ID cua SV");
-    } else {
-        for (i = 0; i < students.length; i++) {
-            if (i === fixID - 1) {
-                students[i].name = prompt("Sua Ten");
-                students[i].address = prompt("Sua address");
+while (Enter >= 1 && Enter <= 4) {
+    if (Enter === 1) {
+        console.table(students);
+    } else if (Enter === 2) {
+        let newStudent = {
+            id: students.length + 1,
+            name: prompt("Nhap ten SV"),
+            address: prompt("Nhap address SV"),
+        };
+        // if (
+        //     newStudents.name === "" ||
+        //     newStudents.name.length > 15 ||
+        //     newStudents.name === " "
+        // ) {
+        //     alert("Ban nhap sai ten SV");
+        // }
+        // if (
+        //     newStudents.address === "" ||
+        //     newStudents.add.length > 15 ||
+        //     newStudents.name === " "
+        // ) {
+        //     alert("ban nhap sai address SV");
+        // }
+        students.push(newStudent);
+        console.table(students);
+    } else if (Enter === 3) {
+        let fixID = Number(prompt("Nhap ID cua SV"));
+        if (fixID <= 0 || fixID > students.length + 1) {
+            alert("Khong tim thay ID cua SV");
+        } else {
+            for (i = 0; i < students.length; i++) {
+                if (i === fixID - 1) {
+                    students[i].name = prompt("Sua Ten");
+                    students[i].address = prompt("Sua address");
+                }
             }
+            console.table(students);
         }
-        console.log(students);
+    } else if (Enter === 4) {
+        let delID = Number(prompt("Nhap ID cua SV"));
+        students.splice(delID - 1, 1);
+        console.table(students);
+    } else {
+        alert("Moi ban nhap lai ");
     }
-} else if (Enter === 4) {
-    let delID = Number(prompt("Nhap ID cua SV"));
-    students.splice(delID - 1, 1);
-    console.log(students);
-} else {
-    console.log("Moi ban nhap lai ");
+    Enter = Number(prompt(menu));
 }

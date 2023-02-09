@@ -152,7 +152,9 @@ function findFirstGoodStudent() {
 
 function addMathPoints() {
     for (let i = 0; i < students.length; i++) {
-        students[i].toan += 1;
+        if (students[i].toan < 10) {
+            students[i].toan += 1;
+        }
     }
     return students;
 }
