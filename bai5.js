@@ -84,7 +84,7 @@ switch (enter) {
         console.log(addPropertiesSum());
         break;
     case 7:
-        console.log(sumPoints());
+        alert(`Tong diem cua cac sinh vien la: ${sumPoints()}`);
         break;
     case 8:
         console.log(averagePoints());
@@ -143,17 +143,19 @@ function addMathPoints() {
 
 function addPropertiesSum() {
     for (let i = 0; i < students.length; i++) {
-        students[i].sumPoints = undefined;
+        students[i].sumPoints =
+            students[i].toan + students[i].ly + students[i].hoa;
     }
     return students;
 }
 
 function sumPoints() {
+    let sumPoints = 0;
     for (let i = 0; i < students.length; i++) {
-        students[i].sumPoints =
-            students[i].toan + students[i].ly + students[i].hoa;
+        sumPoints =
+            sumPoints + (students[i].toan + students[i].ly + students[i].hoa);
     }
-    return students;
+    return sumPoints;
 }
 
 function averagePoints() {
