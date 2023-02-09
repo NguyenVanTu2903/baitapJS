@@ -64,37 +64,41 @@ const menu = `
 Nhap lua chon: `;
 
 let enter = Number(prompt(menu));
-switch (enter) {
-    case 1:
-        alert(`${isTrue()}`);
-        break;
-    case 2:
-        alert(`Co ${checkGoodStudents()} sinh vien gioi`);
-        break;
-    case 3:
-        console.log(filterGoodStudent());
-        break;
-    case 4:
-        console.log(findFirstGoodStudent());
-        break;
-    case 5:
-        console.log(addMathPoints());
-        break;
-    case 6:
-        console.log(addPropertiesSum());
-        break;
-    case 7:
-        alert(`Tong diem cua cac sinh vien la: ${sumPoints()}`);
-        break;
-    case 8:
-        console.log(averagePoints());
-        break;
-    case 9:
-        console.log(sortSumPoint());
-        break;
 
-    default:
-        break;
+while (enter >= 1 && enter <= 9) {
+    switch (enter) {
+        case 1:
+            alert(`${isTrue()}`);
+            break;
+        case 2:
+            alert(`Co ${checkGoodStudents()} sinh vien gioi`);
+            break;
+        case 3:
+            console.table(filterGoodStudent());
+            break;
+        case 4:
+            console.table(findFirstGoodStudent());
+            break;
+        case 5:
+            console.table(addMathPoints());
+            break;
+        case 6:
+            console.table(addPropertiesSum());
+            break;
+        case 7:
+            alert(`Tong diem cua cac sinh vien la: ${sumPoints()}`);
+            break;
+        case 8:
+            console.table(averagePoints());
+            break;
+        case 9:
+            console.table(sortSumPoint());
+            break;
+
+        default:
+            break;
+    }
+    enter = Number(prompt(menu));
 }
 
 function isTrue() {
