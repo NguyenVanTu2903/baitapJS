@@ -17,7 +17,7 @@ const students = [
         id: 3,
         name: "Tan",
         toan: 3,
-        ly: 4,
+        ly: 5,
         hoa: 5,
     },
     {
@@ -51,21 +51,22 @@ const students = [
 ];
 
 const menu = `
-1. Kiểm tra xem có phải tất cả sinh viên đều có các môn trên điểm trung bình không? (biết điểm trung bình là 5)
-2. Kiểm tra xem có sinh viên nào xếp loại giỏi không? (có các môn đều 8 điểm trở lên)
+1. Kiểm tra xem có phải tất cả sinh viên đều có các môn trên điểm trung bình không? 
+2. Kiểm tra xem có sinh viên nào xếp loại giỏi không? 
 3. Lọc ra các sinh viên xếp loại giỏi và in ra
 4. Tìm 1 sinh viên xếp loại giỏi
 5. Cộng cho mỗi sinh viên 1 điểm toán
 6. Thêm thuộc tính tổng điểm 3 môn
 7. Tính tổng điểm của các sinh viên
-8. Tính điểm trung bình của các sinh viên (làm tròn 2 chữ số thập phân)
+8. Tính điểm trung bình của các sinh viên 
 9. Sắp xếp danh sách sinh viên theo tổng điểm tăng dần
+10. Thoát
 
 Nhap lua chon: `;
 
 let enter = Number(prompt(menu));
 
-while (enter >= 1 && enter <= 9) {
+while (enter >= 1 && enter <= 10) {
     switch (enter) {
         case 1:
             alert(`${isTrue()}`);
@@ -94,6 +95,9 @@ while (enter >= 1 && enter <= 9) {
         case 9:
             console.table(sortSumPoint());
             break;
+        case 10:
+            alert("Goodbye!");
+            break;
 
         default:
             break;
@@ -102,105 +106,83 @@ while (enter >= 1 && enter <= 9) {
 }
 
 function isTrue() {
-    for (let i = 0; i < students.length; i++) {
-        if (students[i].toan < 5 || students[i].ly < 5 || students[i].hoa < 5) {
-            return false;
-        }
+    let check = true;
+    students.forEach(function (obj) {
+        if (obj.toan < 5 || obj.ly < 5 || obj.hoa < 5) check = false;
+    });
+    if (check == true) {
+        return true;
+    } else {
+        return false;
     }
-    return true;
 }
+
+// function isTrue() {
+//     students.every(function (obj) {
+//         return obj.toan >= 5 && obj.ly >= 5 && obj.hoa >= 5;
+//     });
+// }
 
 function checkGoodStudents() {
     let count = 0;
-    for (let i = 0; i < students.length; i++) {
-        if (
-            students[i].toan >= 8 &&
-            students[i].ly >= 8 &&
-            students[i].hoa >= 8
-        ) {
+    students.forEach(function (obj) {
+        if (obj.toan >= 8 && obj.ly >= 8 && obj.hoa >= 8) {
             count += 1;
         }
-    }
+    });
     return count;
 }
 
 function filterGoodStudent() {
-    let listGoodStudents = [];
-    for (let i = 0; i < students.length; i++) {
-        if (
-            students[i].toan >= 8 &&
-            students[i].ly >= 8 &&
-            students[i].hoa >= 8
-        ) {
-            listGoodStudents.push(students[i]);
-        }
-    }
+    let listGoodStudents = students.filter(function (obj) {
+        return obj.toan >= 8 && obj.ly >= 8 && obj.hoa >= 8;
+    });
     return listGoodStudents;
 }
 
 function findFirstGoodStudent() {
-    for (let i = 0; i < students.length; i++) {
-        if (
-            students[i].toan >= 8 &&
-            students[i].ly >= 8 &&
-            students[i].hoa >= 8
-        )
-            return students[i];
-    }
-    return alert("Khong tim thay sinh vien gioi");
+    let firstGoodStudent = students.find(function (obj) {
+        return obj.toan >= 8 && obj.ly >= 8 && obj.hoa >= 8;
+    });
+    return typeof firstGoodStudent !== undefined
+        ? firstGoodStudent
+        : alert("Khong tim thay sinh vien gioi");
 }
 
 function addMathPoints() {
-    for (let i = 0; i < students.length; i++) {
-        if (students[i].toan < 10) {
-            students[i].toan += 1;
+    students.forEach(function (obj) {
+        if (obj.toan < 10) {
+            obj.toan += 1;
         }
-    }
+    });
     return students;
 }
 
 function addPropertiesSum() {
-    for (let i = 0; i < students.length; i++) {
-        students[i].sumPoints =
-            students[i].toan + students[i].ly + students[i].hoa;
-    }
+    students.forEach(function (obj) {
+        obj.sumPoints = obj.toan + obj.ly + obj.hoa;
+    });
     return students;
 }
 
 function sumPoints() {
-    let sumPoints = 0;
-    for (let i = 0; i < students.length; i++) {
-        sumPoints =
-            sumPoints + (students[i].toan + students[i].ly + students[i].hoa);
-    }
+    let sumPoints = students.reduce(function (accumulator, currentValue) {
+        return (accumulator +=
+            currentValue.toan + currentValue.ly + currentValue.hoa);
+    }, 0);
     return sumPoints;
 }
 
 function averagePoints() {
-    for (let i = 0; i < students.length; i++) {
-        students[i].averagePoints = Number(
-            ((students[i].toan + students[i].ly + students[i].hoa) / 3).toFixed(
-                2
-            )
+    students.forEach(function (obj) {
+        obj.averagePoints = Number(
+            ((obj.toan + obj.ly + obj.hoa) / 3).toFixed(2)
         );
-    }
+    });
     return students;
 }
 
 function sortSumPoint() {
-    for (let i = 0; i < students.length; i++) {
-        students[i].sumPoints =
-            students[i].toan + students[i].ly + students[i].hoa;
-    }
-
-    for (let i = 0; i < students.length; i++) {
-        for (let j = i + 1; j < students.length; j++) {
-            if (students[i].sumPoints > students[j].sumPoints) {
-                let temp = students[i];
-                students[i] = students[j];
-                students[j] = temp;
-            }
-        }
-    }
+    students.sort((a, b) => a.sumPoints - b.sumPoints);
     return students;
 }
