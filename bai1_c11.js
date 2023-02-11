@@ -92,15 +92,27 @@ function randomNumberInRange(a = 0, b = 10) {
     return Math.round(random) + a;
 }
 
+// function hienThiDanhSachSV() {
+//     console.log("=== DANH SACH SINH VIEN ===");
+//     students.forEach(function (obj) {
+//         console.log("id: " + obj.id);
+//         console.log("name: " + obj.name);
+//         console.log("address: " + obj.address);
+//         console.log("toan: " + obj.toan);
+//         console.log("ly: " + obj.ly);
+//         console.log("hoa: " + obj.hoa);
+//         if (obj.id < students.length) {
+//             console.log("===========");
+//         }
+//     });
+// }
+
 function hienThiDanhSachSV() {
     console.log("=== DANH SACH SINH VIEN ===");
     students.forEach(function (obj) {
-        console.log("id: " + obj.id);
-        console.log("name: " + obj.name);
-        console.log("address: " + obj.address);
-        console.log("toan: " + obj.toan);
-        console.log("ly: " + obj.ly);
-        console.log("hoa: " + obj.hoa);
+        for (let prop in obj) {
+            console.log(prop + ": " + obj[prop]);
+        }
         if (obj.id < students.length) {
             console.log("===========");
         }
