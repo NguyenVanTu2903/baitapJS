@@ -64,15 +64,19 @@ const menu = `
 
 Nhap lua chon: `;
 
-let enter = Number(prompt(menu));
-
-while (enter >= 1 && enter <= 10) {
+let exit = true;
+do {
+    let enter = Number(prompt(menu));
     switch (enter) {
         case 1:
             alert(`${isTrue()}`);
             break;
         case 2:
-            alert(`Co ${checkGoodStudents()} sinh vien gioi`);
+            if (checkGoodStudents()) {
+                alert(`Co ${checkNumberGoodStudents()} sinh vien gioi`);
+            } else {
+                alert("Khong co sinh vien nao xep loại gioi");
+            }
             break;
         case 3:
             console.table(filterGoodStudent());
@@ -97,33 +101,30 @@ while (enter >= 1 && enter <= 10) {
             break;
         case 10:
             alert("Goodbye!");
+            exit = false;
             break;
 
         default:
+            alert("Moi chon lai");
             break;
     }
-    enter = Number(prompt(menu));
-}
+} while (exit);
 
 function isTrue() {
-    let check = true;
-    students.forEach(function (obj) {
-        if (obj.toan < 5 || obj.ly < 5 || obj.hoa < 5) check = false;
+    let check = students.every(function (obj) {
+        return obj.toan >= 5 && obj.ly >= 5 && obj.hoa >= 5;
     });
-    if (check == true) {
-        return true;
-    } else {
-        return false;
-    }
+    return check;
 }
 
-// function isTrue() {
-//     students.every(function (obj) {
-//         return obj.toan >= 5 && obj.ly >= 5 && obj.hoa >= 5;
-//     });
-// }
-
 function checkGoodStudents() {
+    let check = students.some(function (obj) {
+        return obj.toan >= 8 && obj.ly >= 8 && obj.hoa >= 8;
+    });
+    return check;
+}
+
+function checkNumberGoodStudents() {
     let count = 0;
     students.forEach(function (obj) {
         if (obj.toan >= 8 && obj.ly >= 8 && obj.hoa >= 8) {
